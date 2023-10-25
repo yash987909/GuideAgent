@@ -1,0 +1,37 @@
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark h-100" style="width: 280px;">
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item mb-3">
+                <input class="form-control form-control-sm mr-3 w-80" name="from" type="text" id="from" placeholder="Starting Point"
+                    aria-label="Search">
+        </li>
+        <li class="nav-item mb-3">
+                <input class="form-control form-control-sm mr-3 w-80" name="to" id="to" type="text" placeholder="Destination"
+                    aria-label="Search">
+        </li>
+        <li class="nav-item mb-3">
+            <button onclick="calcRoute()" class="btn btn-primary">Search</button>
+        </li>
+        <%  if(locals.transitDetails){%>
+            <hr>
+            <li class="nav-item mb-3">
+                <%= transitDetails %>
+            </li>
+        <% }  %> 
+    </ul>
+</div>
+
+<script>
+    $(document).ready(function(){
+        var autocomplete1;
+        var id1 = 'from';
+        var autocomplete2;
+        var id2 = 'to';
+
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(id1)),{
+            types:['geocode'],
+        })
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(id2)),{
+            types:['geocode'],
+        })
+    });
+</script>
